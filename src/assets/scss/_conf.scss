@@ -1,0 +1,12 @@
+/*
+|--------------------------------------------------------------------------
+| BREAKPOINTS
+|--------------------------------------------------------------------------
+*/
+
+// Usage example:  @media #{$media-tablet}
+
+$BREAKPOINT-DESK: 		        "only screen and (min-width: 1280px)";
+$BREAKPOINT-TABLET-LAND: 	    "only screen and (min-width: 975px)";
+$BREAKPOINT-TABLET: 		    "only screen and (min-width: 600px)";
+$BREAKPOINT-MOBILE-LAND: 		"only screen and (min-width: 480px)";
