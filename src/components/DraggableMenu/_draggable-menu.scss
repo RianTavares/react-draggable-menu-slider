@@ -26,7 +26,7 @@
   &__menu-item:last-child { margin-left: 0px !important;}
   
   &__container{
-    width: 90vw;
+    max-width: 90vw;
     height: 100px;
     background: rgba(201, 165, 118, 0.37);
     direction: ltr;

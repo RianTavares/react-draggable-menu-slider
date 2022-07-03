@@ -9,19 +9,13 @@ const App = () => {
     {name: 'Option 3', url: "http://riantavares.github.io"},
     {name: 'Option 4', url: "http://riantavares.github.io"},
     {name: 'Option 5', url: "http://riantavares.github.io"},
-    {name: 'Option 6', url: "http://riantavares.github.io"},
-    {name: 'Option 7', url: "http://riantavares.github.io"},
-    {name: 'Option 8', url: "http://riantavares.github.io"},
-    {name: 'Option 9', url: "http://riantavares.github.io"},
-    {name: 'Option 10', url: "http://riantavares.github.io"},
-    {name: 'Option 11', url: "http://riantavares.github.io"},
   ]
 
   const settings = {
     dragSpeed: 1.25,
     itemWidth: 150,
     itemHeight: 50,
-    itemSideOffsets: 15,
+    itemSideOffsets: 11,
   }
 
   return(

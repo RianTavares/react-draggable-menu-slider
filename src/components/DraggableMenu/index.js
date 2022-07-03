@@ -8,15 +8,11 @@ const DraggableMenu = (props) => {
   const [startX, setStartX] = useState(null);
   const [transLeftOffset, setTransLeftOffsetsetStartX] = useState(null);
   const { 
-    data,
-    itemWidth,
     itemHeight,
-    itemSideOffsets,
     dragSpeed
   } = props
 
   const cWrapperStyle = {
-    width: `${data.length * (itemWidth + (2 * itemSideOffsets))}px`,
     height: `${itemHeight}px`
   }
   
@@ -61,20 +57,23 @@ const DraggableMenu = (props) => {
   }
   
   const handleSnap = () => {
-    const { data, itemWidth, itemSideOffsets } = props
+    const { data, itemWidth } = props
     const draggableMenu = ref.current
   
     setIsDown(false);
     draggableMenu.classList.remove('active')
   
     const tempThresholdOffset = intValueOf(draggableMenu.firstChild.style.transform)
-    const end = data.length * (itemWidth + (2 * itemSideOffsets)) - 30 - draggableMenu.offsetWidth
-  
-    if (tempThresholdOffset < 0 || tempThresholdOffset > end) {
+    const scrollableWrapper = data.length*itemWidth;
+    const  scrollableWrapperOverflow = scrollableWrapper - draggableMenu.offsetWidth;
+    const end = -(scrollableWrapperOverflow);
+
+
+    if (tempThresholdOffset <= end || tempThresholdOffset > 0) {
       setIsDown(false);
       draggableMenu.firstChild.style.cssText = `
-        transform: translateX(${ tempThresholdOffset < 0 ? 0 : end}px);
-        transition: transform 0.5s cubic-bezier(.25,.72,.51,.96);
+        transform: translateX(${ tempThresholdOffset < end ? end : 0}px);
+        transition: transform 0.5s cubic-bezier(.25,.72,.51,.96);s
       `;
     }
   }
@@ -86,7 +85,8 @@ const DraggableMenu = (props) => {
       onMouseDown={handleMouseDown}
       onMouseLeave={handleMouseLeave}
       onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}>
+      onMouseMove={handleMouseMove}
+      >
       <div 
         className='navigation__wrapper'
         style={{
